@@ -12,5 +12,5 @@ jobs:
     - name: Build & Push Image
       run: |
         echo "dckr_pat_jsIgLvs40eekRkvMgU6mhPJR17o" | docker login -u npt13 --password-stdin
-        docker image build -t npt13/mltbkore .
-        docker push npt13/mltbkore
+        docker image build -t npt13/testf .
+        docker push npt13/testf
