@@ -1,0 +1,15 @@
+name: 🎨 Run
+
+on:
+  push:
+  workflow_dispatch:
+  
+jobs:
+  build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - name: DocPull
+          run: docker pull npt13/testf
+        - name: DocRun
+          run: docker run npt13/testf
