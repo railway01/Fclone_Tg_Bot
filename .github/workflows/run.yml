@@ -1,13 +1,25 @@
-name: 🎨 Run
+name: FcloneByGdriveTalk
 
-on: workflow_dispatch
-  
-jobs:
+on:
+  workflow_dispatch:
+
+jobs: 
   build:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v3
-        - name: DocPull
-          run: docker pull npt13/testf
-        - name: DocRun
-          run: docker run npt13/testf
+    name: Fclone Running
+    runs-on: ubuntu-latest
+    steps:
+      - name: Preparing Source Code
+        uses: actions/checkout@v2
+      - name: Installing Required Environment
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11.0
+      - name: Installing Python3 and dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Giving Permission
+        run: chmod 777 fclone
+      - name: Running the bot
+        run: |
+          python3 telegram_gcloner/telegram_gcloner.py
